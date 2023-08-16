@@ -37,7 +37,7 @@ const removeXtraSpace = () => {
   
 <div className="container my-3">
     <h1 style={{color:props.mode === 'light'?'#042743':'white'}}>Text summary</h1>
-    <p style={{color:props.mode === 'light'?'#042743':'white'}}>There are {text.length} characters and {text.split(" ").length} words</p>
+    <p style={{color:props.mode === 'light'?'#042743':'white'}}>There are {text.length} characters and {text.split(" ").filter((ele)=>{return ele.length!=0}).length} words</p>
 </div>
   </>
   )
