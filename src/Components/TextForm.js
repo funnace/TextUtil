@@ -6,9 +6,10 @@ export default function TextForm(props) {
         setText(newText);
     }
 const copyText = () =>{
-  var text = document.getElementById("myBox");
-  text.select()
-  navigator.clipboard.writeText(text.value)
+  //var text = document.getElementById("myBox");
+  //text.select()
+  //navigator.clipboard.writeText(text.value)
+  navigator.clipboard.writeText(text)
   props.showAlert("Copied to Clipboard!s","success")
 }
 
@@ -37,7 +38,7 @@ const removeXtraSpace = () => {
   
 <div className="container my-3">
     <h1 style={{color:props.mode === 'light'?'#042743':'white'}}>Text summary</h1>
-    <p style={{color:props.mode === 'light'?'#042743':'white'}}>There are {text.length} characters and {text.split(" ").filter((ele)=>{return ele.length!==0}).length} words</p>
+    <p style={{color:props.mode === 'light'?'#042743':'white'}}>There are {text.length} characters and {text.split(/\s+/).filter((ele)=>{return ele.length!==0}).length} words</p>
 </div>
   </>
   )
