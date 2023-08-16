@@ -24,20 +24,20 @@ const removeXtraSpace = () => {
     const handleOnChange = (event) =>{
          setText(event.target.value);
     }
-    const [text,setText] = useState("Enter text here....")
+    const [text,setText] = useState("")
   return (<>
 <div classNamename="container">
     <h1 style={{color:props.mode === 'light'?'#042743':'white'}}>{props.text}</h1>
   <textarea className="form-control" value={text} style={{backgroundColor:props.mode === 'light'?'#042743':'white',color:props.mode === 'light'?'white':'#042743'}} onChange={handleOnChange} id="myBox" rows="8"></textarea>
   </div><br/>
-  <button className="btn btn-primary mx-2" onClick={handleUcClick}>Convert to UpperCase</button>
-  <button className="btn btn-info mx-2" onClick={handleClrClick}>Clear Text</button>
-  <button className="btn btn-warning mx-2" onClick={copyText}>Copy Text</button>
-  <button className="btn btn-success mx-2" onClick={removeXtraSpace}>Remove Extra Spaces</button>
+  <button disabled={text.length===0} className="btn btn-primary mx-2" onClick={handleUcClick}>Convert to UpperCase</button>
+  <button disabled={text.length===0} className="btn btn-info mx-2" onClick={handleClrClick}>Clear Text</button>
+  <button disabled={text.length===0} className="btn btn-warning mx-2" onClick={copyText}>Copy Text</button>
+  <button disabled={text.length===0} className="btn btn-success mx-2" onClick={removeXtraSpace}>Remove Extra Spaces</button>
   
 <div className="container my-3">
     <h1 style={{color:props.mode === 'light'?'#042743':'white'}}>Text summary</h1>
-    <p style={{color:props.mode === 'light'?'#042743':'white'}}>There are {text.length} characters and {text.split(" ").filter((ele)=>{return ele.length!=0}).length} words</p>
+    <p style={{color:props.mode === 'light'?'#042743':'white'}}>There are {text.length} characters and {text.split(" ").filter((ele)=>{return ele.length!==0}).length} words</p>
 </div>
   </>
   )
