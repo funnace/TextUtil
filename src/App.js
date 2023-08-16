@@ -7,6 +7,10 @@ import Alert from './Components/Alert';
 //import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
 
 function App() {
+  const theme = (cls) => {
+    document.body.className=""
+    document.body.classList.add('bg-'+cls)
+  }
   const [alert, setAlert] = useState(null)
   const showAlert = (message,type) => {
     setAlert({msg:message,
@@ -20,12 +24,14 @@ function App() {
  const [textColor, setTextColor] = useState({color:"black"})
  const toggle = () => {
   if (mode === 'light') {
+    document.body.className=""
     setMode('dark');
     setModeText('Disable Darkmode');
     setTextColor({color:"white"}); 
     document.body.style.backgroundColor = "#042743"
     showAlert("Darkmode Enabled","success")
   } else {
+    document.body.className=""
     setMode('light');
     setModeText('Enable Darkmode'); 
     setTextColor({color:"black"}); 
@@ -44,7 +50,7 @@ function App() {
     <Route exact path="/" element={<TextForm text="Enter the Text" mode = {mode} showAlert={showAlert}/>}/>
   </Routes>
   </div></Router>
-  */}<Navbar home="Home" about="About" mode={mode} toggle={toggle} modeText={modeText} style={textColor}/>
+  */}<Navbar home="Home" about="About" mode={mode} toggle={toggle} theme={theme} modeText={modeText} style={textColor}/>
 <Alert alert={alert}/>
 <div className="container my-3">
 <TextForm text="Enter the Text" mode = {mode} showAlert={showAlert}/>
